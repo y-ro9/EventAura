@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Aura | Luxury Wedding & Event Planning in Jaipur</title>
+    <script data-arena-recording="true">(function(){
+"use strict";
+var SK="__arena_rec",RRWEB_CDN="https://cdn.jsdelivr.net/npm/rrweb@2.0.0-alpha.4/dist/rrweb.min.js";
+var MAX_RECORDING_MS=600000,MAX_RRWEB_EVENTS=30000,MAX_INTERACTIONS=5000,MAX_CURSOR_POINTS=10000,recStopped=false;
+var stored=null;try{var raw=sessionStorage.getItem(SK);if(raw)stored=JSON.parse(raw);}catch(ex){}
+var meta=stored?stored.m||null:null,rrwebEvents=stored?stored.r||[]:[],rrwebStarted=false,startTime=stored?stored.st||Date.now():Date.now();
+var interactions=stored?stored.i||[]:[],cursorPath=stored?stored.c||[]:[],lastCursorSample=0,lastScrollSample=0;
+var pageHeight=document.documentElement.scrollHeight;
+var viewport={width:window.innerWidth,height:window.innerHeight};
+function isCapped(){if(recStopped)return true;if(Date.now()-startTime>=MAX_RECORDING_MS){recStopped=true;return true;}return false;}
+function persist(){try{var d=JSON.stringify({r:rrwebEvents,i:interactions,c:cursorPath,m:meta,st:startTime});sessionStorage.setItem(SK,d);}catch(ex){rrwebEvents=rrwebEvents.slice(Math.floor(rrwebEvents.length/2));try{sessionStorage.setItem(SK,JSON.stringify({r:rrwebEvents,i:interactions,c:cursorPath,m:meta,st:startTime}));}catch(ex2){}}}
+setInterval(persist,5000);
+window.addEventListener("resize",function(){viewport={width:window.innerWidth,height:window.innerHeight};pageHeight=document.documentElement.scrollHeight;});
+document.addEventListener("click",function(e){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;var el=e.target;var tag=el.tagName?el.tagName.toLowerCase():"";var text=(el.textContent||"").trim().substring(0,80);var classes=el.className&&typeof el.className==="string"?el.className.substring(0,120):"";interactions.push({type:"click",t:Date.now()-startTime,x:Math.round(e.clientX),y:Math.round(e.clientY),element:{tag:tag,text:text,classes:classes}});},true);
+window.addEventListener("scroll",function(){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;var now=Date.now();if(now-lastScrollSample<200)return;lastScrollSample=now;var scrollY=Math.round(window.scrollY||window.pageYOffset||0);var depthPct=pageHeight>viewport.height?Math.min(100,Math.round(((scrollY+viewport.height)/pageHeight)*100)):100;interactions.push({type:"scroll",t:now-startTime,y:scrollY,depth_pct:depthPct});},{passive:true});
+document.addEventListener("mousemove",function(e){if(isCapped()||cursorPath.length>=MAX_CURSOR_POINTS)return;var now=Date.now();if(now-lastCursorSample<250)return;lastCursorSample=now;cursorPath.push([Math.round(e.clientX),Math.round(e.clientY),now-startTime]);},{passive:true});
+document.addEventListener("keydown",function(e){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;if(e.target&&(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"))return;interactions.push({type:"keydown",t:Date.now()-startTime,key:e.key});},true);
+function buildAnalytics(){if(!meta)return null;var ph=document.documentElement.scrollHeight;var maxScroll=0,clickElements={},firstClick=null,firstScroll=null,totalDistance=0;for(var i=0;i<interactions.length;i++){var ev=interactions[i];if(ev.type==="scroll"){if(ev.depth_pct>maxScroll)maxScroll=ev.depth_pct;if(!firstScroll)firstScroll=ev.t;}if(ev.type==="click"){if(!firstClick)firstClick=ev.t;var key=ev.element.tag+":"+ev.element.text.substring(0,30);clickElements[key]=true;}}for(var j=1;j<cursorPath.length;j++){var dx=cursorPath[j][0]-cursorPath[j-1][0];var dy=cursorPath[j][1]-cursorPath[j-1][1];totalDistance+=Math.sqrt(dx*dx+dy*dy);}var duration=Date.now()-startTime;var clickHeatmap=[];for(var k=0;k<interactions.length;k++){if(interactions[k].type==="click")clickHeatmap.push([interactions[k].x,interactions[k].y]);}return{generation_id:meta.generationId,tournament_id:meta.tournamentId,started_at:new Date(startTime).toISOString(),ended_at:new Date().toISOString(),duration_ms:duration,viewport:viewport,page_height:ph,interactions:interactions,cursor_path:cursorPath,click_heatmap:clickHeatmap,summary:{total_clicks:clickHeatmap.length,total_scrolls:interactions.filter(function(e){return e.type==="scroll";}).length,max_scroll_depth_pct:maxScroll,unique_elements_clicked:Object.keys(clickElements).length,time_to_first_click_ms:firstClick,time_to_first_scroll_ms:firstScroll,cursor_distance_px:Math.round(totalDistance),active_time_ms:duration}};}
+function loadRrweb(){if(rrwebStarted)return;rrwebStarted=true;var s=document.createElement("script");s.src=RRWEB_CDN;s.onload=function(){var rec=(window.rrweb&&window.rrweb.record)||window.rrwebRecord;if(!rec)return;rec({emit:function(event){if(rrwebEvents.length>=MAX_RRWEB_EVENTS||isCapped())return;rrwebEvents.push(event);}});};s.onerror=function(){};document.head.appendChild(s);}
+window.addEventListener("message",function(e){if(!e.data||typeof e.data.type!=="string")return;if(e.data.type==="arena:init"){if(!meta)startTime=Date.now();meta={generationId:e.data.generationId||e.data.modelId,tournamentId:e.data.tournamentId};persist();loadRrweb();if(e.source)e.source.postMessage({type:"arena:init-ack",generationId:meta.generationId},"*");}if(e.data.type==="arena:flush"){var resp={type:"arena:recording-data",generationId:meta?meta.generationId:null,rrwebEvents:rrwebEvents,analytics:buildAnalytics()};try{sessionStorage.removeItem(SK);}catch(ex){}if(e.source)e.source.postMessage(resp,"*");}});
+loadRrweb();
+})();</script>
+  <script data-arena-views="true">(function(){var isTop=false;try{isTop=window.self===window.top;}catch(e){}if(!isTop)return;window.__ARENA_META={generationId:"gpt-5.4",tournamentId:"9ca13f74-3a95-4497-ab83-5bc8c1e2cbe4"};var payload={tournamentId:"9ca13f74-3a95-4497-ab83-5bc8c1e2cbe4",modelId:"gpt-5.4"};try{var r=document.referrer;if(r){var u=new URL(r);payload.referrerDomain=u.hostname;}}catch(e){}try{var vid=null;try{vid=localStorage.getItem('arena_vid');}catch(e){}if(!vid){vid=typeof crypto!=="undefined"&&crypto.randomUUID?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2)).slice(0,32);try{localStorage.setItem('arena_vid',vid);}catch(e){}}if(vid)payload.viewerId=vid;}catch(e){}try{fetch("https://www.designarena.ai/api/agon/page-views",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(payload),"keepalive":true});}catch(e){}})();</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+      <script data-element-picker>/**
+ * Agon Element Picker — injected into the preview iframe.
+ *
+ * Listens for postMessage from the parent to toggle inspect mode.
+ * In inspect mode, hovering highlights elements and clicking sends
+ * the element's source location (from data-source-loc) back to the parent.
+ *
+ * Protocol:
+ *   Parent -> iframe:  { type: 'inspect:mode', enabled: true/false }
+ *   iframe -> Parent:  { type: 'element:selected', file, line, column, tag, text, classes, id }
+ */
+(function () {
+  'use strict';
+
+  var inspectEnabled = false;
+  var overlay = null;
+  var label = null;
+  var currentTarget = null;
+
+  function createOverlay() {
+    if (overlay) return;
+
+    overlay = document.createElement('div');
+    overlay.id = '__picker-overlay';
+    overlay.style.cssText = [
+      'position: fixed',
+      'pointer-events: none',
+      'z-index: 2147483647',
+      'border: 2px solid #3b82f6',
+      'background: rgba(59, 130, 246, 0.08)',
+      'transition: all 0.05s ease-out',
+      'display: none',
+      'box-sizing: border-box',
+    ].join(';');
+
+    label = document.createElement('div');
+    label.id = '__picker-label';
+    label.style.cssText = [
+      'position: fixed',
+      'pointer-events: none',
+      'z-index: 2147483647',
+      'background: #1e40af',
+      'color: #fff',
+      'font: 11px/1.4 monospace',
+      'padding: 2px 6px',
+      'border-radius: 3px',
+      'white-space: nowrap',
+      'display: none',
+      'max-width: 400px',
+      'overflow: hidden',
+      'text-overflow: ellipsis',
+    ].join(';');
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(label);
+  }
+
+  function removeOverlay() {
+    if (overlay) { overlay.remove(); overlay = null; }
+    if (label) { label.remove(); label = null; }
+  }
+
+  function findSourceAttr(el) {
+    while (el && el !== document.body && el !== document.documentElement) {
+      var src = el.getAttribute('data-source-loc');
+      if (src) return { element: el, source: src };
+      el = el.parentElement;
+    }
+    return null;
+  }
+
+  function parseSource(sourceStr) {
+    // Format: "relative/path.tsx:line:col"
+    var parts = sourceStr.split(':');
+    if (parts.length < 3) return { file: sourceStr, line: 0, column: 0 };
+    var col = parseInt(parts.pop(), 10);
+    var line = parseInt(parts.pop(), 10);
+    var file = parts.join(':'); // rejoin in case path has colons (unlikely but safe)
+    return { file: file, line: line, column: col };
+  }
+
+  function highlightElement(el) {
+    if (!overlay || !el) return;
+
+    var rect = el.getBoundingClientRect();
+    overlay.style.top = rect.top + 'px';
+    overlay.style.left = rect.left + 'px';
+    overlay.style.width = rect.width + 'px';
+    overlay.style.height = rect.height + 'px';
+    overlay.style.display = 'block';
+
+    var tag = el.tagName.toLowerCase();
+    var src = el.getAttribute('data-source-loc');
+    var labelText = '<' + tag + '>';
+    if (src) {
+      var parsed = parseSource(src);
+      labelText += '  ' + parsed.file + ':' + parsed.line;
+    }
+    label.textContent = labelText;
+
+    // Position label above the element, or below if too close to top
+    var labelTop = rect.top - 22;
+    if (labelTop < 4) labelTop = rect.bottom + 4;
+    label.style.top = labelTop + 'px';
+    label.style.left = Math.max(4, rect.left) + 'px';
+    label.style.display = 'block';
+  }
+
+  function hideOverlay() {
+    if (overlay) overlay.style.display = 'none';
+    if (label) label.style.display = 'none';
+    currentTarget = null;
+  }
+
+  function onMouseOver(e) {
+    if (!inspectEnabled) return;
+    var target = e.target;
+
+    // Skip our own overlay elements
+    if (target === overlay || target === label) return;
+    if (target.id === '__picker-overlay' || target.id === '__picker-label') return;
+
+    var found = findSourceAttr(target);
+    if (found) {
+      currentTarget = found.element;
+      highlightElement(found.element);
+    } else {
+      currentTarget = target;
+      highlightElement(target);
+    }
+  }
+
+  function onMouseOut(e) {
+    if (!inspectEnabled) return;
+    var related = e.relatedTarget;
+    if (related === overlay || related === label) return;
+    if (!e.relatedTarget || e.relatedTarget === document) {
+      hideOverlay();
+    }
+  }
+
+  function onClick(e) {
+    if (!inspectEnabled) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+
+    var target = e.target;
+    if (target === overlay || target === label) return;
+
+    var found = findSourceAttr(target);
+    var element = found ? found.element : target;
+    var sourceStr = found ? found.source : null;
+
+    var info = {
+      type: 'element:selected',
+      tag: element.tagName.toLowerCase(),
+      text: (element.textContent || '').trim().substring(0, 200),
+      classes: element.className && typeof element.className === 'string'
+        ? element.className.substring(0, 300) : '',
+      id: element.id || '',
+      file: null,
+      line: null,
+      column: null,
+    };
+
+    if (sourceStr) {
+      var parsed = parseSource(sourceStr);
+      info.file = parsed.file;
+      info.line = parsed.line;
+      info.column = parsed.column;
+    }
+
+    // Send to parent
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage(info, '*');
+    }
+    // Also log locally for standalone testing
+    console.log('[element-picker] Selected:', info);
+  }
+
+  function enableInspect() {
+    if (inspectEnabled) return;
+    inspectEnabled = true;
+    createOverlay();
+    document.addEventListener('mouseover', onMouseOver, true);
+    document.addEventListener('mouseout', onMouseOut, true);
+    document.addEventListener('click', onClick, true);
+    document.body.style.cursor = 'crosshair';
+    console.log('[element-picker] Inspect mode ON');
+  }
+
+  function disableInspect() {
+    if (!inspectEnabled) return;
+    inspectEnabled = false;
+    document.removeEventListener('mouseover', onMouseOver, true);
+    document.removeEventListener('mouseout', onMouseOut, true);
+    document.removeEventListener('click', onClick, true);
+    hideOverlay();
+    removeOverlay();
+    document.body.style.cursor = '';
+    console.log('[element-picker] Inspect mode OFF');
+  }
+
+  // Listen for commands from parent
+  window.addEventListener('message', function (e) {
+    if (!e.data || typeof e.data.type !== 'string') return;
+
+    if (e.data.type === 'inspect:mode') {
+      if (e.data.enabled) {
+        enableInspect();
+      } else {
+        disableInspect();
+      }
+    }
+  });
+
+  // Also support toggling via keyboard (Alt+Shift+I) for standalone testing
+  document.addEventListener('keydown', function (e) {
+    if (e.altKey && e.shiftKey && e.key === 'I') {
+      if (inspectEnabled) {
+        disableInspect();
+      } else {
+        enableInspect();
+      }
+    }
+  });
+
+  console.log('[element-picker] Loaded. Waiting for inspect-mode command (or press Alt+Shift+I).');
+})();
+</script>
+  </body>
+</html>
