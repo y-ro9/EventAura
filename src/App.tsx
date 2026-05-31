@@ -29,7 +29,7 @@ import { useMemo, useState } from 'react'
 
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw6SIGYY0js6X7C7aTopjjpobuyyIXU_qEz48bh2RsEkjAPzWf_dKq5LnUzudtBCiEOLg/exec'
 
-const categoryFolderMap = {
+const categoryFolderMap: Record<string, string> = {
   'Royal Weddings': '1DoqxSV4Oz81VgM5yjkf-euVTkN1-wuFX',
   'Luxury Stage Decor': '1naEXx8-gHskhtIvYtN9oK8bY08_u-IEv',
   'Mehndi Functions': '1UKZ-ZbYpDKkvq7SvMCkgFs0gz7Nk9dOy',
